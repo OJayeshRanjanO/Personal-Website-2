@@ -1,0 +1,26 @@
+body {
+  margin: 0;
+  overflow-x:hidden;
+}
+
+#landingPageCanvas{
+/*    border:1px solid black;*/
+    position: relative;
+    top: 0px;
+    left:0px;
+}
+#aboutMeCanvas{
+    position: relative;
+    top: -4px;
+    left:0px;
+    
+}
+#experienceCanvas{
+    position: relative;
+    top: -8px;
+    left:0px;
+    
+}
+::-webkit-scrollbar { 
+    display: none; 
+}
