@@ -1,6 +1,6 @@
 // Initial Setup
 const canvas = document.getElementById("landingPageCanvas");
-const c = canvas.getContext('2d');
+const c = canvas.getContext('2d',{ alpha: false });
 
 canvas.width = window.innerWidth;
 canvas.height = $(window).height();
@@ -15,7 +15,7 @@ for (var i = 0 ; i < 10; i++){
     starArray.push(new Circle(2 + (Math.random() * innerWidth),2 + (Math.random() * (innerHeight - innerHeight / 2)),0.1,1));
 }
 //Moon
-var moon = new Circle(innerWidth/2,innerHeight/4,20,1);
+//var moon = new Circle(innerWidth/2,innerHeight/4,20,1);
 var buttonArray = [];//document.getElementsByClassName("homePageButton");
 createButton();
 
@@ -24,14 +24,15 @@ var mouseY = 0;
 
 
 function initialize(){
-    
+    c.clearRect(0,0,innerWidth,innerHeight);
+
     generateBackground();
     
     
 //    startTime();
     
     //Moon
-    moon.circular();
+//    moon.circular();
     
     //For Waves
     for (var i = 0; i < waveArray.length; i++){
@@ -48,25 +49,68 @@ function initialize(){
         starArray[i].glow();
     }   
     
-    //For Buttons
-    for (var i = 0; i < buttonArray.length; i++){
-        buttonArray[i].draw();
-    } 
+//    //For Buttons
+//    for (var i = 0; i < buttonArray.length; i++){
+//        buttonArray[i].draw();
+//    } 
+//    
+//    
+//    //Intro Text
+//    c.fillStyle='#FFFFFF';//#110433
+//    c.shadowBlur = 20;
+//    c.shadowOffsetX = 0;
+//    c.shadowOffsetY = 0;
+//    c.shadowColor = '#FFFFFF';//#7a68a8
+//    c.font = "small-caps 2em Orbitron sans-serif";
+//    var introText = "< Jayesh Ranjan >";
+//    c.fillText(introText, innerWidth/2 - (c.measureText(introText).width/2), innerHeight/2.2);
     
-    
-    //Intro Text
-    c.fillStyle='#FFFFFF';//#110433
-    c.shadowBlur = 20;
-    c.shadowOffsetX = 0;
-    c.shadowOffsetY = 0;
-    c.shadowColor = '#FFFFFF';//#7a68a8
-    c.font = "small-caps 2em Orbitron sans-serif";
-    var introText = "< Jayesh Ranjan >";
-    c.fillText(introText, innerWidth/2 - (c.measureText(introText).width/2), innerHeight/2.2);
-    
+    c.beginPath();
 
 }
 
+
+
+function animate(){
+    requestAnimationFrame(animate);
+    
+
+    initialize();
+    initialize2();
+    initialize3();
+
+
+    
+    
+}
+initialize();
+
+
+animate();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//EVENT LISTENERS
 document.addEventListener('onload',function(){
     location.reload();
     window.location.href = "#landingPageCanvas";
@@ -119,25 +163,4 @@ canvas.addEventListener('click',function(event){
     } 
     
 });
-
-
-function animate(){
-    requestAnimationFrame(animate);
-    c.clearRect(0,0,innerWidth,innerHeight);
-    
-
-    initialize();
-    initialize2();
-    initialize3();
-
-
-    
-    c.beginPath();
-    
-}
-//initialize();
-
-animate();
-
-
 

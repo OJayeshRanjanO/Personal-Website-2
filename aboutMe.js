@@ -1,5 +1,5 @@
 const canvas2 = document.getElementById("aboutMeCanvas");
-const d = canvas2.getContext('2d');
+const d = canvas2.getContext('2d',{ alpha: false });
 
 canvas2.width = window.innerWidth;
 canvas2.height = $(window).height();
@@ -31,7 +31,8 @@ canvas2.addEventListener('mousemove',function(event){
 
 
 function initialize2(){
-    
+    d.clearRect(0,0,innerWidth2,innerHeight2);
+  
     //Background
     var backgroundGradient = d.createLinearGradient(0,0,0, canvas2.height);
     backgroundGradient.addColorStop(0,'hsl('+hue+', 85%, 11%)');//"#952fc4"
@@ -49,13 +50,13 @@ function initialize2(){
     d.font = "small-caps 2em Orbitron sans-serif";
     var aboutMe = "< About Me >";
     d.fillText(aboutMe, innerWidth2/2 - (d.measureText(aboutMe).width/2), innerHeight2/6);
-            d.fillStyle='rgb(100, 100,100)';//#110433
-
-    //For Comets    
+   
     for (var i = 0; i < aboutMeTextArray.length; i++){
         aboutMeTextArray[i].draw();
     }
+    d.beginPath();
+
 }
-//initialize2();
+initialize2();
 
 

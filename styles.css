@@ -11,13 +11,13 @@ body {
 }
 #aboutMeCanvas{
     position: relative;
-    top: -4px;
+    top: -5px;
     left:0px;
     
 }
 #experienceCanvas{
     position: relative;
-    top: -8px;
+    top: -10px;
     left:0px;
     
 }

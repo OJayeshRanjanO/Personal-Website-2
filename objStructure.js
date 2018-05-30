@@ -296,3 +296,37 @@ function aboutMeFillInText(){
     }
 }
 
+function Stage(x,y,a){
+    this.x = x;
+    this.y = y;
+    this.radius = 10;
+    this.color = "#FFFFFF";
+    this.radians = 0;
+    this.velocity = 0.1;
+    this.opacity = a;
+    
+    this.update = function(){
+        const lastPoint = {x:this.x, y:this.y};
+        this.radians += this.velocity;
+        this.x += Math.cos(this.radians) * 20;
+        this.y += Math.sin(this.radians) * 2;
+        this.draw(lastPoint.x , lastPoint.y);
+    }
+    
+    this.draw = function(x,y){
+        e.fillStyle='#rgba(255,255,255,'+this.opacity+')';//#110433
+        e.shadowBlur = 5;
+        e.shadowOffsetX = 0;
+        e.shadowOffsetY = 0;
+        e.shadowColor = 'hsl('+hue+', 100%, 50%)';//#7a68a8
+        
+        
+        e.beginPath();
+		e.strokeStyle = 'hsl('+hue+', 100%, 50%)';
+		e.lineWidth = this.radius;
+		e.moveTo(x, y);
+		e.lineTo(this.x, this.y);
+		e.stroke();
+		e.closePath();
+    }
+}
