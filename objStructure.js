@@ -296,14 +296,15 @@ function aboutMeFillInText(){
     }
 }
 
-function Stage(x,y,a){
-    this.x = x;
-    this.y = y;
+function Stage(x,y,a,context){
     this.radius = 10;
+    this.x = x+this.radius;
+    this.y = y;
     this.color = "#FFFFFF";
     this.radians = 0;
     this.velocity = 0.1;
     this.opacity = a;
+    this.context = context;
     
     this.update = function(){
         const lastPoint = {x:this.x, y:this.y};
@@ -314,19 +315,19 @@ function Stage(x,y,a){
     }
     
     this.draw = function(x,y){
-        e.fillStyle='#rgba(255,255,255,'+this.opacity+')';//#110433
-        e.shadowBlur = 5;
-        e.shadowOffsetX = 0;
-        e.shadowOffsetY = 0;
-        e.shadowColor = 'hsl('+hue+', 100%, 50%)';//#7a68a8
+        this.context.fillStyle='#rgba(255,255,255,'+this.opacity+')';//#110433
+        this.context.shadowBlur = 5;
+        this.context.shadowOffsetX = 0;
+        this.context.shadowOffsetY = 0;
+        this.context.shadowColor = 'hsl('+hue+', 100%, 50%)';//#7a68a8
         
         
-        e.beginPath();
-		e.strokeStyle = 'hsl('+hue+', 100%, 50%)';
-		e.lineWidth = this.radius;
-		e.moveTo(x, y);
-		e.lineTo(this.x, this.y);
-		e.stroke();
-		e.closePath();
+        this.context.beginPath();
+		this.context.strokeStyle = 'hsl('+hue+', 100%, 50%)';
+		this.context.lineWidth = this.radius;
+		this.context.moveTo(x, y);
+		this.context.lineTo(this.x, this.y);
+		this.context.stroke();
+		this.context.closePath();
     }
 }

@@ -1,6 +1,7 @@
 body {
   margin: 0;
   overflow-x:hidden;
+    background: black;
 }
 
 #landingPageCanvas{
@@ -15,11 +16,12 @@ body {
     left:0px;
     
 }
-#experienceCanvas{
+#TACanvas{
     position: relative;
-    top: -10px;
-    left:0px;
-    
+/*    top: -10px;*/
+/*    float:left;*/
+    left:100px;   
+    border: 2px solid white;
 }
 ::-webkit-scrollbar { 
     display: none; 
